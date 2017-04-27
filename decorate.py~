@@ -1,0 +1,11 @@
+def foo(a, b, c):
+    print str(a)+b+c
+
+def wrapper( f ):
+   def inner( *arg ):
+       return f( *arg )
+   return inner
+
+
+closure = wrapper(foo)
+closure( -2, 3, 'hello' ) #will run foo with the arguments -2, 3, 'hello' through wrapper
