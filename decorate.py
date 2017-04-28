@@ -7,13 +7,15 @@ import time
 def time_fxn(f):
     def inner (*arg):
         start = time.time()
-        f(*arg)
-        return "run time: " + str(time.time()-start)
+        a = f(*arg)
+        print "run time: " + str(time.time()-start)
+        return a
     return inner
 
 def fxn_info(f):
     def inner( *arg ):
-        return f.func_name + str(arg)
+        print f.func_name + str(arg)
+        return f(*arg)
     return inner 
 
 @fxn_info
@@ -27,5 +29,5 @@ def fib(n):
     return fib(n-2) + fib(n-1)
 
 #c = fxn_info(foo)
-print foo(3,4,"a")
-print fib(30)
+foo(3,4,"a")
+print fib(8)
